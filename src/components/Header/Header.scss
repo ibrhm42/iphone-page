@@ -1,0 +1,138 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    /* translucent dark layer */
+    backdrop-filter: blur(8px);
+    /* the magic blur */
+    -webkit-backdrop-filter: blur(8px);
+    /* for Safari */
+    z-index: 1;
+    /* make sure it’s above everything else */
+    transition: opacity 0.3s ease;
+
+    /* smooth fade-in */
+    &.show {
+        width: 100vw;
+
+    }
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    z-index: 3;
+
+    img {
+        width: 14px;
+        height: auto;
+    }
+
+    &>nav {
+        height: 50px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+
+
+
+
+        &>span {
+            color: gray;
+            font-size: 12px;
+            padding: 0 8px;
+            white-space: nowrap;
+        }
+    }
+
+    .header__menu {
+        box-sizing: border-box;
+        transition: max-height 0.5s;
+        background-color: black;
+        position: fixed;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        z-index: 2;
+
+        &--open {
+            max-height: 100vh;
+        }
+
+        &>div:first-child {
+            a {
+                font-size: 24px;
+            }
+        }
+
+        &-container {
+            padding: 50px 0;
+        }
+
+        .header__menu-section {
+            &>span {
+                color: rgba(256, 256, 256, 0.7);
+            }
+
+            a {
+                color: white;
+            }
+
+        }
+    }
+}
+
+@media (max-width: 830px) {
+    .header {
+        &>nav {
+            &>span {
+                display: none;
+            }
+
+            &>a:nth-last-child(2) {
+                margin-left: auto;
+            }
+        }
+    }
+}
+
+
+
+.burgerIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    &>i {
+        display: inline-block;
+        width: 16px;
+        height: 1px;
+        background-color: rgba(256, 256, 256, 0.7);
+        transition: transform 1s;
+    }
+
+    &--crossed {
+        &>i {
+            &:first-child {
+                transform: rotate(45deg) translateY(5px);
+            }
+
+            &:last-child {
+                transform: rotate(-45deg) translateY(-5px);
+            }
+        }
+    }
+}
